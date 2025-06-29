@@ -1,0 +1,14 @@
+# Ignorar archivos y carpetas comunes en Django
+__pycache__/
+*.py[cod]
+*.log
+db.sqlite3
+
+# Ignorar archivos subidos y carpetas de imágenes
+media/
+media/*
+images/
+images/*
+
+# Ignorar entorno virtual
+venv/

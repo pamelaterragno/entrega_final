@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBlog</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'sobremi' %}">Acerca del blog</a>
+        <a href="{% url 'list' %}">Blog</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'perfil' %}">Perfil</a>
+            {% if user.profile.avatar %}
+                <img src="{{ user.profile.avatar.url }}" alt="Avatar" width="40">
+            {% endif %}
+            <a href="{% url 'inbox' %}">Messenger</a>
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: blue; cursor: pointer;">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Registrarse</a>
+        {% endif %}
+    </nav>
+
+    {% block content %}{% endblock %}
+
+   {% if user.is_authenticated and request.resolver_match.url_name == 'home' or request.resolver_match.url_name == 'list' %}
+    <a href="{% url 'crear' %}">Crear publicación</a>
+{% endif %}
+
+
+</body>
+</html>

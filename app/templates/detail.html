@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <h3>{{ post.subtitle }}</h3>
+
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" width="400">
+    {% endif %}
+
+    <p>{{ post.body|safe }}</p>
+    <p>Publicado por: {{ post.author.username }}</p>
+    <p>Fecha: {{ post.created_at }}</p>
+
+    <a href="{% url 'list' %}">Volver</a>
+{% endblock %}

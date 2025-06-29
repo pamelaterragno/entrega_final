@@ -1,0 +1,59 @@
+## Proyecto base tipo blog con Django - Playground Final Project
+
+# Estructura de carpetas
+
+myblog/
+├── accounts/           # App para registro, login, perfil
+├── blog/               # App principal con los posts
+├── messaging/          # App para mensajería entre usuarios
+├── myblog/             # Configuración general
+├── static/             # Archivos estáticos (CSS, JS, imágenes)
+├── templates/          # Templates base y herencia
+├── media/              # Archivos subidos por usuarios (agregar al .gitignore)
+├── db.sqlite3          # Ignorar en Git
+├── manage.py
+├── requirements.txt
+└── .gitignore
+
+# apps.py, models.py, views.py, urls.py y forms.py deben estar en cada app
+
+## Resumen de funcionalidades por app
+
+### 1. accounts (registro, login, perfil, logout)
+- Registro de usuario con username, email, password.
+- Vista de perfil: nombre, apellido, email, avatar, bio.
+- Edición de perfil y cambio de contraseña.
+- Login y logout.
+- Uso de vistas basadas en clase para login y perfil.
+- Decoradores para proteger las vistas de edición.
+
+### 2. blog 
+- Modelo Post con: título, subtítulo, contenido (ckeditor), imagen, fecha de creación.
+- Listado de posts con link al detalle.
+- Vista de detalle, creación, edición y borrado (requieren login).
+- Mixin LoginRequired para proteger vistas de edición y borrado.
+- Mensaje si no hay posts o búsqueda sin resultados.
+
+### 3. messaging
+- Listado de mensajes recibidos.
+- Envío de mensajes a otros usuarios.
+
+### 4. myblog
+- NavBar con links a Home, About, Blog, Login/Logout, Perfil.
+- Vista Home.
+- Vista About.
+- Herencia de templates: base.html.
+
+## Archivos importantes
+- `requirements.txt` actualizado (Django, ckeditor, etc.).
+- `.gitignore` con:
+  ```
+  __pycache__/
+  db.sqlite3
+  media/
+  ```
+
+## Extras opcionales
+- Likes a los posts.
+- Mensajes con fecha y hora.
+- Filtros por autor en los posts.
